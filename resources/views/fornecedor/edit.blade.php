@@ -36,6 +36,31 @@
                 </div>
 
                 <div>
+                    <label for="numero" class="visually-hidden">Número</label>
+                    <input type="text" name="numero" id="numero" value="{{ $fornecedor->enderecos->first()->numero ?? '' }}" placeholder="Número"/>
+                 </div>
+
+                 <div>
+                    <label for="complemento" class="visually-hidden">Complemento</label>
+                    <input type="text" name="complemento" id="complemento" value="{{ $fornecedor->enderecos->first()->complemento ?? '' }}" placeholder="Complemento"/>
+                </div>
+
+                <div>
+                    <label for="bairro" class="visually-hidden">Bairro</label>
+                    <input type="text" name="bairro" id="bairro" value="{{ $fornecedor->enderecos->first()->bairro ?? '' }}" placeholder="Bairro"/>
+                </div>
+
+                <div>
+                    <label for="nomecidade" class="visually-hidden">Cidade</label>
+                    <input type="text" name="nomecidade" id="nomecidade" value="{{ $fornecedor->enderecos->first()->nomecidade ?? '' }}" placeholder="Cidade"/>
+                </div>            
+
+                <div>
+                    <label for="nomeestado" class="visually-hidden">Estado</label>
+                    <input type="text" name="nomeestado" id="nomeestado" value="{{ $fornecedor->enderecos->first()->nomeestado ?? '' }}" placeholder="Estado"/>
+                </div>  
+
+                <div>
                     <label for="telefone" class="visually-hidden">Telefone</label>
                     <input type="text" name="telefone" id="telefone" data-type="telefone" placeholder="Telefone"
                            value="{{ $fornecedor->telefones->first()->isNumero ?? '' }}"/>
@@ -79,17 +104,17 @@ $(function(){
             var dados = response.dados;
             if (response.dados.erro) {
                 
-                alert("CEP invalido");
-                $("#cep").attr("value", "");
-                $("#endereco").attr("value", "");
+                //alert("CEP invalido");
+                //$("#cep").attr("value", "");
+               // $("#endereco").attr("value", "");
                 return;
             }
-            var endereco = dados.logradouro + 
-            ", Bairro: " + dados.bairro + 
-            ", Cidade: " + dados.cidade +
-            ", UF: " + dados.uf + 
-            ", CEP: " + dados.cep;
-            $("#endereco").attr("value", endereco);
+
+            $("#cep").attr("value", dados.cep);
+            $("#endereco").attr("value", dados.logradouro);
+            $("#bairro").attr("value", dados.bairro);
+            $("#nomecidade").attr("value", dados.cidade);
+            $("#nomeestado").attr("value", dados.uf);
         }
         });
 
