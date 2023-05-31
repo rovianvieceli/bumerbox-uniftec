@@ -19,7 +19,11 @@ class UpdateFornecedorRequest extends FormRequest
             'cep' => Str::replace(['.', '-', '/'], '', $this->get('cep')),
             'telefone' => Str::replace(['(', ')', ' ', '-'], '', $this->get('telefone')),
             'rua' => $this->get('endereco'),
-            'numero' => 0,
+            'complemento' => $this->get('complemento'),
+            'bairro' => $this->get('bairro'),
+            'nomecidade' => $this->get('nomecidade'),
+            'nomeestado' => $this->get('nomeestado'),
+            'numero' => $this->get('numero'),
             'nome' => $this->get('nomefantasia'),
             'senha' => Str::random(8),
         ]);

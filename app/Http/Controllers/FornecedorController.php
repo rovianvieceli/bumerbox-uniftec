@@ -95,7 +95,15 @@ class FornecedorController extends Controller
 
             $request->merge(['cidade_id' => 1]);
             if ($fornecedore->enderecos()->count()) {
-                $fornecedore->enderecos()->update($request->all(['usuario_id', 'cidade_id', 'rua', 'cep', 'numero']));
+                $fornecedore->enderecos()->update($request->all(['usuario_id', 
+                                                                 'cidade_id', 
+                                                                 'rua',
+                                                                 'complemento',
+                                                                 'bairro',
+                                                                 'nomecidade',
+                                                                 'nomeestado' ,
+                                                                 'cep', 
+                                                                 'numero']));
             } else {
                 Endereco::create($request->all());
             }

@@ -31,6 +31,27 @@
                         <th>Endereço</th>
                         <td>{{ $fornecedor->enderecos->first()->rua ?? '' }}</td>
                     </tr>
+
+                    <tr>
+                        <th>Número</th>
+                        <td>{{ $fornecedor->enderecos->first()->numero ?? '' }}</td>
+                    </tr>
+                    <tr>
+                        <th>Complemento</th>
+                        <td>{{ $fornecedor->enderecos->first()->complemento ?? '' }}</td>
+                    </tr>
+                    <tr>
+                        <th>Bairro</th>
+                        <td>{{ $fornecedor->enderecos->first()->bairro ?? '' }}</td>
+                    </tr>
+                    <tr>
+                        <th>Cidade</th>
+                        <td>{{ $fornecedor->enderecos->first()->nomecidade ?? '' }}</td>
+                    </tr>  
+                    <tr>   
+                        <th>Estado</th>
+                        <td>{{ $fornecedor->enderecos->first()->nomeestado ?? '' }}</td>
+                    </tr>
                     <tr>
                         <th>Telefone</th>
                         <td>{{ $fornecedor->telefones->first()->isNumero ?? '' }}</td>
