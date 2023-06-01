@@ -25,6 +25,7 @@ Route::resource('conta', Controllers\ContaController::class);
 Route::resource('registro', Controllers\RegistroController::class);
 Route::resource('minhaconta', Controllers\MinhaContaController::class);
 Route::resource('fornecedores', Controllers\FornecedorController::class);
+Route::resource('regiaointeresse', Controllers\RegiaoInteresseController::class);
 
 Route::post(
     'busca-dados-cep', "App\Http\Controllers\EnderecoController@getEnderecoByCep"
