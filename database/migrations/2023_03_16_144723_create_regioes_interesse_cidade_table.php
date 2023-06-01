@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('regioes_interesse_cidade', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->datetimes();
             $table->softDeletes();
             $table->unsignedInteger('created_by')->nullable();
             $table->unsignedInteger('updated_by')->nullable();

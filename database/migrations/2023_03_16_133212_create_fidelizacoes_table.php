@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('fidelizacoes', function (Blueprint $table) {
             $table->id();
             $table->unsignedDouble('valor_receber')->nullable();
-            $table->timestamps();
+            $table->datetimes();
             $table->softDeletes();
             $table->unsignedInteger('created_by')->nullable();
             $table->unsignedInteger('updated_by')->nullable();
