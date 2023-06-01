@@ -26,7 +26,8 @@
                 <div>
                     <label for="cep" class="visually-hidden">CEP</label>
                     <input type="text" name="cep" id="cep" value="{{ $fornecedor->enderecos->first()->isCep ?? '' }}"
-                           data-type="cep" placeholder="CEP"/>
+                           data-type="cep" placeholder="CEP"
+                           onkeyup="buscaCep();"/>
                 </div>
 
                 <div>
@@ -73,55 +74,3 @@
         </div>
     </div>
 @endsection
-
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<meta name="csrf-token" content="{{ csrf_token() }}" />
-<script>
-
-$(function(){
-    
-    cep.addEventListener('keyup', () => {
-        
-      var cep = $("#cep");
-      if (cep.val().length < 9) {
-        return;
-      }
-
-      $.ajax({
-
-        type:'POST',
-        url:"{{ route('busca-dados-cep') }}",
-        dataType: 'JSON',
-        data: {
-            "cep": cep.val(),
-        },
-        headers: {
-          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        },
-        success:function(response){
-        
-            var dados = response.dados;
-            if (response.dados.erro) {
-                
-                //alert("CEP invalido");
-                //$("#cep").attr("value", "");
-               // $("#endereco").attr("value", "");
-                return;
-            }
-
-            $("#cep").attr("value", dados.cep);
-            $("#endereco").attr("value", dados.logradouro);
-            $("#bairro").attr("value", dados.bairro);
-            $("#nomecidade").attr("value", dados.cidade);
-            $("#nomeestado").attr("value", dados.uf);
-        }
-        });
-
-   });
-
-
-});
-
-</script>
-
