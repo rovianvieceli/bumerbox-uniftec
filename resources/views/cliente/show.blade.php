@@ -36,6 +36,26 @@
                         <td>{{ $cliente->enderecos->first()->rua ?? '' }}</td>
                     </tr>
                     <tr>
+                        <th>Número</th>
+                        <td>{{ $cliente->enderecos->first()->numero ?? '' }}</td>
+                    </tr>
+                    <tr>
+                        <th>Complemento</th>
+                        <td>{{ $cliente->enderecos->first()->complemento ?? '' }}</td>
+                    </tr>
+                    <tr>
+                        <th>Bairro</th>
+                        <td>{{ $cliente->enderecos->first()->bairro ?? '' }}</td>
+                    </tr>
+                    <tr>
+                        <th>Cidade</th>
+                        <td>{{ $cliente->enderecos->first()->nomecidade ?? '' }}</td>
+                    </tr>  
+                    <tr>   
+                        <th>Estado</th>
+                        <td>{{ $cliente->enderecos->first()->nomeestado ?? '' }}</td>
+                    </tr>
+                    <tr>
                         <th>Telefone</th>
                         <td>{{ $cliente->telefones->first()->isNumero ?? '' }}</td>
                     </tr>
