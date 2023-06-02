@@ -94,7 +94,15 @@ class ClienteController extends Controller
 
             $request->merge(['cidade_id' => 1]);
             if ($cliente->enderecos()->count()) {
-                $cliente->enderecos()->update($request->all(['usuario_id', 'cidade_id', 'rua', 'cep', 'numero']));
+                $cliente->enderecos()->update($request->all(['usuario_id', 
+                                                             'cidade_id', 
+                                                             'rua',
+                                                             'complemento',
+                                                             'bairro',
+                                                             'nomecidade',
+                                                             'nomeestado' ,
+                                                             'cep', 
+                                                             'numero']));
             } else {
                 Endereco::create($request->all());
             }
