@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('rua', 255);
             $table->unsignedInteger('cep');
             $table->unsignedInteger('numero');
-            $table->timestamps();
+            $table->datetimes();
             $table->softDeletes();
             $table->unsignedInteger('created_by')->nullable();
             $table->unsignedInteger('updated_by')->nullable();

@@ -1,10 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Support\Facades\Auth;
+
+use App\Models\Atualizacao;
+use App\Traits\GitHubTrait;
 
 class HomeController extends Controller
 {
+    use GitHubTrait;
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -12,6 +16,11 @@ class HomeController extends Controller
 
     public function index()
     {
-        return view('home.index');
+        $atualizacoes = Atualizacao::paginate(8);
+        $closePullRequests = $this->getClosePullRequests();
+
+        return view('home.index')
+            ->withAtualizacoes($atualizacoes)
+            ->withClosePullRequests($closePullRequests);
     }
 }

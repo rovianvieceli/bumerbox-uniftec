@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('telefones', function (Blueprint $table) {
             $table->id();
             $table->string('numero', 11);
-            $table->timestamps();
+            $table->datetimes();
             $table->softDeletes();
             $table->unsignedInteger('created_by')->nullable();
             $table->unsignedInteger('updated_by')->nullable();

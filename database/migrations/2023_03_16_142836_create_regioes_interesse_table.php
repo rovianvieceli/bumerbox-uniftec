@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('regioes_interesse', function (Blueprint $table) {
             $table->id();
             $table->string('nome', 255);
-            $table->timestamps();
+            $table->datetimes();
             $table->softDeletes();
             $table->unsignedInteger('created_by')->nullable();
             $table->unsignedInteger('updated_by')->nullable();

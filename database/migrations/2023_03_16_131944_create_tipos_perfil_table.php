@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('nome', 50);
             $table->string('codigo', 3)->unique();
             $table->boolean('visivel')->default(true);
-            $table->timestamps();
+            $table->datetimes();
             $table->softDeletes();
             $table->unsignedInteger('created_by')->nullable();
             $table->unsignedInteger('updated_by')->nullable();

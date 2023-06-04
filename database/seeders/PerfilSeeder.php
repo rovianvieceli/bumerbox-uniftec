@@ -10,6 +10,7 @@ class PerfilSeeder extends Seeder
 {
     private static array $perfil = [
         ['usuario_id' => 1, 'tipo_perfil_codigo' => 'SYS'],
+        ['usuario_id' => 2, 'tipo_perfil_codigo' => 'ADM'],
     ];
 
     private function create($dados): PerfilSeeder

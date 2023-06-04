@@ -10,6 +10,7 @@ class TipoPerfilSeeder extends Seeder
 {
     private static array $tipoPerfil = [
         ['nome' => 'Sistema', 'codigo' => 'SYS', 'visivel' => false],
+        ['nome' => 'Administrador', 'codigo' => 'ADM', 'visivel' => false],
         ['nome' => 'Usuário', 'codigo' => 'USR'],
         ['nome' => 'Cliente', 'codigo' => 'CLT'],
         ['nome' => 'Fornecedor', 'codigo' => 'FRN']

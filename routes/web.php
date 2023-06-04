@@ -24,6 +24,7 @@ Route::resource('usuarios', Controllers\UsuarioController::class);
 Route::resource('conta', Controllers\ContaController::class);
 Route::resource('registro', Controllers\RegistroController::class);
 Route::resource('minhaconta', Controllers\MinhaContaController::class);
+Route::resource('atualizacoes', Controllers\AtualizacaoController::class);
 Route::resource('fornecedores', Controllers\FornecedorController::class);
 
 Route::post(

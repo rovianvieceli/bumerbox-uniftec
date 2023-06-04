@@ -18,7 +18,11 @@
                     @foreach($registros as $registro)
                         <tr>
                             @foreach($colunas as $coluna)
-                                <td>{{ $registro->$coluna }}</td>
+                                @if($pos = strpos($coluna, "@"))
+                                    <td>{{ $registro->{substr($coluna, 0, $pos)}->first()->{substr($coluna, $pos + 1)} }}</td>
+                                @else
+                                    <td>{{ $registro->$coluna }}</td>
+                                @endif
                             @endforeach
                             <td class="text-center">
                                 @component('componentes.navegacao.acoes', ['resource' => $resource, 'id' => $registro->id]) @endcomponent
