@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreAtualizacaoRequest;
-use App\Http\Requests\UpdateAtualizacaoRequest;
+use App\Http\Requests\Atualizacao\StoreAtualizacaoRequest;
+use App\Http\Requests\Atualizacao\UpdateAtualizacaoRequest;
 use App\Models\Atualizacao;
 use App\Models\TipoPerfil;
 use Exception;

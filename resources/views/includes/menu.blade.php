@@ -11,7 +11,7 @@
                     <a class="nav-link" href="{{ route('fornecedores.index') }}">Fornecedores</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Categoria</a>
+                    <a class="nav-link" href="{{ route('categorias.index') }}">Categorias</a>
                 </li>
 
                 <h6 class="menu-opcao d-flex">Extrair</h6>
