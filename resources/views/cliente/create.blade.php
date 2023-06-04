@@ -23,13 +23,40 @@
 
             <div>
                 <label for="cep" class="visually-hidden">CEP</label>
-                <input type="text" name="cep" id="cep" value="{{ old('cep') }}" data-type="cep" placeholder="CEP"/>
+                <input type="text" name="cep" id="cep" value="{{ old('cep') }}" onkeyup="buscaCep();" data-type="cep" placeholder="CEP"/>
             </div>
 
             <div>
                 <label for="endereco" class="visually-hidden">Endereço</label>
                 <input type="text" name="endereco" id="endereco" value="{{ old('endereco') }}" placeholder="Endereço"/>
             </div>
+
+            
+            <div>
+                <label for="numero" class="visually-hidden">Número</label>
+                <input type="text" name="numero" id="numero" value="{{ old('numero') }}" placeholder="Número"/>
+            </div>
+
+            <div>
+                <label for="complemento" class="visually-hidden">Complemento</label>
+                <input type="text" name="complemento" id="complemento" value="{{ old('complemento') }}" placeholder="Complemento"/>
+            </div>
+
+            <div>
+                <label for="bairro" class="visually-hidden">Bairro</label>
+                <input type="text" name="bairro" id="bairro" value="{{ old('bairro') }}" placeholder="Bairro"/>
+            </div>
+
+            <div>
+                <label for="nomecidade" class="visually-hidden">Cidade</label>
+                <input type="text" name="nomecidade" id="nomecidade" value="{{ old('nomecidade') }}" placeholder="Cidade"/>
+            </div>            
+
+            <div>
+                <label for="nomeestado" class="visually-hidden">Estado</label>
+                <input type="text" name="nomeestado" id="nomeestado" value="{{ old('nomeestado') }}" placeholder="Estado"/>
+            </div>            
+
 
             <div>
                 <label for="telefone" class="visually-hidden">Telefone</label>

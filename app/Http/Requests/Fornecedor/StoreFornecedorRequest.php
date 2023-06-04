@@ -20,7 +20,11 @@ class StoreFornecedorRequest extends FormRequest
             'cep' => Str::replace(['.', '-', '/'], '', $this->get('cep')),
             'telefone' => Str::replace(['(', ')', ' '], '', $this->get('telefone')),
             'rua' => $this->get('endereco'),
-            'numero' => 0,
+            'numero' => $this->get('numero'),
+            'complemento' => $this->get('complemento'),
+            'bairro' => $this->get('bairro'),
+            'nomecidade' => $this->get('nomecidade'),
+            'nomeestado' => $this->get('nomeestado'),
             'nome' => $this->get('nomefantasia'),
             'senha' => Str::random(8),
         ]);

@@ -26,7 +26,8 @@
                 <div>
                     <label for="cep" class="visually-hidden">CEP</label>
                     <input type="text" name="cep" id="cep" value="{{ $fornecedor->enderecos->first()->isCep ?? '' }}"
-                           data-type="cep" placeholder="CEP"/>
+                           data-type="cep" placeholder="CEP"
+                           onkeyup="buscaCep();"/>
                 </div>
 
                 <div>
@@ -34,6 +35,31 @@
                     <input type="text" name="endereco" id="endereco" value="{{ $fornecedor->enderecos->first()->rua ?? '' }}"
                            placeholder="Endereço"/>
                 </div>
+
+                <div>
+                    <label for="numero" class="visually-hidden">Número</label>
+                    <input type="text" name="numero" id="numero" value="{{ $fornecedor->enderecos->first()->numero ?? '' }}" placeholder="Número"/>
+                 </div>
+
+                 <div>
+                    <label for="complemento" class="visually-hidden">Complemento</label>
+                    <input type="text" name="complemento" id="complemento" value="{{ $fornecedor->enderecos->first()->complemento ?? '' }}" placeholder="Complemento"/>
+                </div>
+
+                <div>
+                    <label for="bairro" class="visually-hidden">Bairro</label>
+                    <input type="text" name="bairro" id="bairro" value="{{ $fornecedor->enderecos->first()->bairro ?? '' }}" placeholder="Bairro"/>
+                </div>
+
+                <div>
+                    <label for="nomecidade" class="visually-hidden">Cidade</label>
+                    <input type="text" name="nomecidade" id="nomecidade" value="{{ $fornecedor->enderecos->first()->nomecidade ?? '' }}" placeholder="Cidade"/>
+                </div>            
+
+                <div>
+                    <label for="nomeestado" class="visually-hidden">Estado</label>
+                    <input type="text" name="nomeestado" id="nomeestado" value="{{ $fornecedor->enderecos->first()->nomeestado ?? '' }}" placeholder="Estado"/>
+                </div>  
 
                 <div>
                     <label for="telefone" class="visually-hidden">Telefone</label>
