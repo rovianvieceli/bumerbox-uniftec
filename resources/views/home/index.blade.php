@@ -25,15 +25,21 @@
         <div class="col-3">
             <h6><strong>Últimos commits</strong></h6>
             <div class="list-group">
-                @foreach($closePullRequests as $pullRequest)
+                @if (!count($closePullRequests))
                     <div class="list-group-item list-group-item-action">
-                        <div class="d-grid justify-content-between">
-                            <strong
-                                class="small text-wrap">Sha: {{ substr($pullRequest->merge_commit_sha, 0, 18) }}</strong>
-                            <small>{{ $pullRequest->title }}</small>
-                        </div>
+                        Nenhum commit a relatar!
                     </div>
-                @endforeach
+                @else
+                    @foreach($closePullRequests as $pullRequest)
+                        <div class="list-group-item list-group-item-action">
+                            <div class="d-grid justify-content-between">
+                                <strong
+                                    class="small text-wrap">Sha: {{ substr($pullRequest->merge_commit_sha, 0, 18) }}</strong>
+                                <small>{{ $pullRequest->title }}</small>
+                            </div>
+                        </div>
+                    @endforeach
+                @endif
             </div>
         </div>
     </div>
