@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('categorias', function (Blueprint $table) {
             $table->id();
-            $table->string('nome', 200);
-            $table->unsignedDecimal('desconto')->nullable();
+            $table->mediumText('nome');
+            $table->unsignedDecimal('valor_unitario')->nullable();
             $table->datetimes();
             $table->softDeletes();
             $table->unsignedInteger('created_by')->nullable();
