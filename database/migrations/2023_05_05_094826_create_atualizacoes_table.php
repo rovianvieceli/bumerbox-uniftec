@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('atualizacoes', function (Blueprint $table) {
             $table->id();
-            $table->string('descricao')->nullable();
+            $table->mediumText('descricao')->nullable();
             $table->datetimes();
             $table->softDeletes();
             $table->unsignedInteger('created_by')->nullable();

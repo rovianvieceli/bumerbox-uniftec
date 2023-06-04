@@ -5,7 +5,7 @@
         'registros' => $atualizacoes,
         'resource' => 'atualizacoes',
         'titulos' => ['#', 'Autor', 'Mensagem'],
-        'colunas' => ['id', 'tipoPerfil@nome', 'descricao']
+        'colunas' => ['id', 'tipoPerfil@nome', 'mensagem']
     ])
     @endcomponent
 @endsection

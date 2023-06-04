@@ -18,8 +18,8 @@
                     @foreach($registros as $registro)
                         <tr>
                             @foreach($colunas as $coluna)
-                                @if($pos = strpos($coluna, '@'))
-                                    @dd($coluna->tipo_perfil)
+                                @if($pos = strpos($coluna, "@"))
+                                    <td>{{ $registro->{substr($coluna, 0, $pos)}->first()->{substr($coluna, $pos + 1)} }}</td>
                                 @else
                                     <td>{{ $registro->$coluna }}</td>
                                 @endif
