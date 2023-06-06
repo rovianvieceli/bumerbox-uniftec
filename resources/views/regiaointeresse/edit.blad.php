@@ -14,53 +14,14 @@
                 @csrf
                 @method('put')
                 <div>
-                    <label for="nomefantasia" class="visually-hidden">Nome Fantasia</label>
-                    <input type="text" name="nomefantasia" id="nomefantasia" value="{{ $regiaointeresse->nome }}" placeholder="Nome Fantasia"/>
-                </div>
-
-               
-                <div>
-                    <label for="cep" class="visually-hidden">CEP</label>
-                    <input type="text" name="cep" id="cep" value="{{ $regiaointeresse->enderecos->first()->isCep ?? '' }}"
-                           data-type="cep" placeholder="CEP"/>
-                </div>
-
-                <div>
-                    <label for="endereco" class="visually-hidden">Endereço</label>
-                    <input type="text" name="endereco" id="endereco" value="{{ $regiaointeresse->enderecos->first()->rua ?? '' }}"
-                           placeholder="Endereço"/>
-                </div>
-
-                <div>
-                    <label for="numero" class="visually-hidden">Número</label>
-                    <input type="text" name="numero" id="numero" value="{{ $regiaointeresse->enderecos->first()->numero ?? '' }}" placeholder="Número"/>
-                 </div>
-
-                 <div>
-                    <label for="complemento" class="visually-hidden">Complemento</label>
-                    <input type="text" name="complemento" id="complemento" value="{{ $regiaointeresse->enderecos->first()->complemento ?? '' }}" placeholder="Complemento"/>
-                </div>
-
-                <div>
-                    <label for="bairro" class="visually-hidden">Bairro</label>
-                    <input type="text" name="bairro" id="bairro" value="{{ $regiaointeresse->enderecos->first()->bairro ?? '' }}" placeholder="Bairro"/>
+                    <label for="regiao" class="visually-hidden">Regiao</label>
+                    <input type="text" name="regiao" id="regiao" value="{{ $regiaointeresse->nome }}" placeholder="Regiao"/>
                 </div>
 
                 <div>
                     <label for="nomecidade" class="visually-hidden">Cidade</label>
                     <input type="text" name="nomecidade" id="nomecidade" value="{{ $regiaointeresse->enderecos->first()->nomecidade ?? '' }}" placeholder="Cidade"/>
                 </div>            
-
-                <div>
-                    <label for="nomeestado" class="visually-hidden">Estado</label>
-                    <input type="text" name="nomeestado" id="nomeestado" value="{{ $regiaointeresse->enderecos->first()->nomeestado ?? '' }}" placeholder="Estado"/>
-                </div>  
-
-                <div>
-                    <label for="telefone" class="visually-hidden">Telefone</label>
-                    <input type="text" name="telefone" id="telefone" data-type="telefone" placeholder="Telefone"
-                           value="{{ $regiaointeresse->telefones->first()->isNumero ?? '' }}"/>
-                </div>
 
                 <div class="d-flex justify-content-center my-3">
                     <button type="submit" class="btn btn-success">Atualizar</button>

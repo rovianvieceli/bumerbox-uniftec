@@ -16,42 +16,14 @@
                         <td>{{ $regiaointeresse->id }}</td>
                     </tr>
                     <tr>
-                        <th>Nome Fantasia</th>
+                        <th>Região</th>
                         <td>{{ $regiaointeresse->nome }}</td>
                     </tr>
                     <tr>
-                        <th>CEP</th>
-                        <td>{{ $regiaointeresse->enderecos->first()->isCep ?? '' }}</td>
-                    </tr>
-                    <tr>
-                        <th>Endereço</th>
-                        <td>{{ $regiaointeresse->enderecos->first()->rua ?? '' }}</td>
+                        <th>Cidade</th>
+                        <td>{{ $regiaointeresse->enderecos->first()->cidade?? '' }}</td>
                     </tr>
 
-                    <tr>
-                        <th>Número</th>
-                        <td>{{ $regiaointeresse->enderecos->first()->numero ?? '' }}</td>
-                    </tr>
-                    <tr>
-                        <th>Complemento</th>
-                        <td>{{ $regiaointeresse->enderecos->first()->complemento ?? '' }}</td>
-                    </tr>
-                    <tr>
-                        <th>Bairro</th>
-                        <td>{{ $regiaointeresse->enderecos->first()->bairro ?? '' }}</td>
-                    </tr>
-                    <tr>
-                        <th>Cidade</th>
-                        <td>{{ $regiaointeresse->enderecos->first()->nomecidade ?? '' }}</td>
-                    </tr>  
-                    <tr>   
-                        <th>Estado</th>
-                        <td>{{ $regiaointeresse->enderecos->first()->nomeestado ?? '' }}</td>
-                    </tr>
-                    <tr>
-                        <th>Telefone</th>
-                        <td>{{ $regiaointeresse->telefones->first()->isNumero ?? '' }}</td>
-                    </tr>
                     <tr>
                         <th>Criado em</th>
                         <td>{{ $regiaointeresse->criadoEm }}</td>
