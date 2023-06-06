@@ -19,7 +19,7 @@ class UpdateClienteRequest extends FormRequest
             'cep' => Str::replace(['.', '-', '/'], '', $this->get('cep')),
             'telefone' => Str::replace(['(', ')', '-', ' '], '', $this->get('telefone')),
             'rua' => $this->get('endereco'),
-            'numero' => 0,
+            'numero' => $this->get('numero'),
             'visivel' => $this->has('visivel'),
             'fidelizado' => $this->has('fidelizado'),
         ]);

@@ -3,14 +3,15 @@
 namespace App\Models;
 
 use App\Traits\AuditionTrait;
+use App\Traits\CategoriaTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Categoria extends Model
 {
-    use SoftDeletes, AuditionTrait;
+    use SoftDeletes, AuditionTrait, CategoriaTrait;
 
     protected $primaryKey = 'id';
     protected $table = 'categorias';
-    protected $fillable = ['nome', 'desconto'];
+    protected $fillable = ['nome', 'valor_unitario'];
 }

@@ -14,8 +14,11 @@ return new class extends Migration
         Schema::create('cidades', function (Blueprint $table) {
             $table->id();
             $table->string('nome', 255);
-            $table->timestamp('created_at')->default(now());
+            $table->datetimes();
+            $table->softDeletes();
             $table->unsignedInteger('created_by')->default(1);
+            $table->unsignedInteger('updated_by')->default(1);
+            $table->unsignedInteger('deleted_by')->nullable();
         });
     }
 

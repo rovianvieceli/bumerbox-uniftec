@@ -14,7 +14,7 @@ class RegiaoInteresseController extends Controller
 
     public function index()
     {
-       
+
         return view('regiaointeresse.index')
             ->withTitulo('Listagem das Regiões de Interesse')
             ->withSubTitulo('Listagem com todas as Regiões de Interesse do sistema!');
@@ -42,16 +42,16 @@ class RegiaoInteresseController extends Controller
     {
         return view('regiaointeresse.edit')
             ->withTitulo()
-            ->withSubTitulo('Altere os dados da região selecionada!')
+            ->withSubTitulo('Altere os dados da região selecionada!');
     }
 
     public function update()
     {
-       
+
     }
 
     public function destroy()
     {
-        
+
     }
 }

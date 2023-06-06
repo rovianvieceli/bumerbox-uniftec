@@ -4,13 +4,16 @@ namespace Database\Seeders;
 
 use App\Models\Usuario;
 use Exception;
-use Faker\Factory;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Hash;
 
 class UsuarioSeeder extends Seeder
 {
     private static array $administradores = [
+        [
+            'nome' => 'Sistema',
+            'cpfcnpj' => '22872788000',
+            'visivel' => false
+        ],
         [
             'nome' => 'Administrador',
             'senha' => '@dm1n1str@d0r',

@@ -11,10 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('descontos', function (Blueprint $table) {
+        Schema::create('atualizacoes', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('quantidade');
-            $table->unsignedDouble('valor');
+            $table->mediumText('descricao')->nullable();
             $table->datetimes();
             $table->softDeletes();
             $table->unsignedInteger('created_by')->nullable();
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('descontos');
+        Schema::dropIfExists('atualizacoes');
     }
 };

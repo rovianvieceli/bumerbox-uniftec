@@ -15,10 +15,10 @@ return new class extends Migration {
             $table->string('nome');
             $table->date('data_nascimento')->nullable();
             $table->string('cpfcnpj', 14)->unique()->nullable();
-            $table->string('senha');
+            $table->string('senha')->nullable();
             $table->boolean('fidelizado')->default(false);
             $table->boolean('visivel')->default(true);
-            $table->timestamps();
+            $table->datetimes();
             $table->softDeletes();
             $table->unsignedInteger('created_by')->nullable();
             $table->unsignedInteger('updated_by')->nullable();
