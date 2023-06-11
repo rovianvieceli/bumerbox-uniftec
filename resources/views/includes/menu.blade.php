@@ -13,6 +13,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('categorias.index') }}">Categorias</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('regiaointeresse.index') }}">Regiões de Interesse</a>
+                </li>
 
                 <h6 class="menu-opcao d-flex">Extrair</h6>
 

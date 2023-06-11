@@ -6,8 +6,8 @@
             <div class="d-flex justify-content-end">
                 @component('componentes.navegacao.acoes', [
                     'acao' => 'show',
-                    'resource' => 'atualizacoes',
-                    'id' => $atualizacao->id
+                    'resource' => 'regiaointeresse',
+                    'id' => $regiaoInteresse->id
                 ])
                 @endcomponent
             </div>
@@ -17,35 +17,31 @@
                     <tbody>
                     <tr>
                         <th>#</th>
-                        <td>{{ $atualizacao->id }}</td>
+                        <td>{{ $regiaoInteresse->id }}</td>
                     </tr>
                     <tr>
-                        <th>Código autor</th>
-                        <td>{{ $atualizacao->tipoPerfil->first()->codigo }}</td>
+                        <th>Região</th>
+                        <td>{{ $regiaoInteresse->nome }}</td>
                     </tr>
                     <tr>
-                        <th>Autor</th>
-                        <td>{{ $atualizacao->tipoPerfil->first()->nome }}</td>
-                    </tr>
-                    <tr>
-                        <th>Descrição</th>
-                        <td>{{ $atualizacao->descricao }}</td>
+                        <th>Cidade</th>
+                        <td>{{ $regiaoInteresse->nome_cidade }}</td>
                     </tr>
                     <tr>
                         <th>Criado em</th>
-                        <td>{{ $atualizacao->criadoEm }}</td>
+                        <td>{{ $regiaoInteresse->criadoEm }}</td>
                     </tr>
                     <tr>
                         <th>Modifiado em</th>
-                        <td>{{ $atualizacao->modificadoEm }}</td>
+                        <td>{{ $regiaoInteresse->modificadoEm }}</td>
                     </tr>
                     <tr>
                         <th>Criado por</th>
-                        <td>{{ $atualizacao->criadoPor }}</td>
+                        <td>{{ $regiaoInteresse->criadoPor }}</td>
                     </tr>
                     <tr>
                         <th>Modificado por</th>
-                        <td>{{ $atualizacao->modificadoPor }}</td>
+                        <td>{{ $regiaoInteresse->modificadoPor }}</td>
                     </tr>
                     </tbody>
                 </table>
