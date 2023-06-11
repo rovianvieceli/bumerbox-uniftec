@@ -2,10 +2,10 @@
 
 @section('conteudo')
     @component('componentes.formulario.listagem',[
-        'registros' => $fornecedores,
-        'resource' => 'fornecedores',
+        'registros' => $regiaoInteresse,
+        'resource' => 'regiaointeresse',
         'titulos' => ['#', 'Regiao','Cidade'],
-        'colunas' => ['id', 'regiao', 'cidade']
+        'colunas' => ['id', 'nome', 'nome_cidade']
     ])
     @endcomponent
 @endsection

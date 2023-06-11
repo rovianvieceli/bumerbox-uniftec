@@ -67,7 +67,9 @@ function eventDataTypeTelefone(e) {
 }
 
 function eventToastAlert(toastAlert) {
-    bootstrap.Toast.getOrCreateInstance(toastAlert).show()
+    if (toastAlert) {
+        bootstrap.Toast.getOrCreateInstance(toastAlert).show()
+    }
 }
 
 eventDataTypeDateInput(inputDate)
