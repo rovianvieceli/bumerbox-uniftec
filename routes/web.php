@@ -28,6 +28,7 @@ Route::resource('atualizacoes', Controllers\AtualizacaoController::class);
 Route::resource('fornecedores', Controllers\FornecedorController::class);
 Route::resource('categorias', Controllers\CategoriaController::class);
 Route::resource('regiaointeresse', Controllers\RegiaoInteresseController::class);
+Route::resource('fidelizacoes', Controllers\FidelizacaoController::class);
 
 Route::post(
     'busca-dados-cep', "App\Http\Controllers\EnderecoController@getEnderecoByCep"

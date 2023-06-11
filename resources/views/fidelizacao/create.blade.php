@@ -1,0 +1,35 @@
+@extends('layout.base')
+
+@section('conteudo')
+    @component('componentes.formulario.cadastro', ['acao' => 'create', 'recurso' => 'fidelizacoes','dados' => 'dados' ,'errors' => $errors])
+        <form action="{{ route('fidelizacoes.store') }}" method="post">
+            @csrf
+
+            <div>
+            <input type="text" name="usuario_id" id="usuario_id" value="1" placeholder="usuario_id"/>
+                <label for="categoria_id" class="visually-hidden">Categorias</label>
+                <select name="categoria_id" id="categoria_id">
+                    <option value="">Selecione a Categoria</option>
+                    @foreach($dados->categorias as $categoria)
+                      <option value="{{$categoria->id}}">{{$categoria->nome}}</option>
+                    @endforeach
+                </select>    
+            </div>
+            
+            <div>
+                <label for="valor_receber" class="visually-hidden">Quantidade</label>
+                <input type="text" name="valor_receber" id="valor_receber" value="{{ old('valor_receber') }}" placeholder="Quantidade"/>
+            </div>
+            <div>
+                <label for="regiao_interesse" class="visually-hidden">Região Interesse</label>
+                <select name="regiao_interesse" id="regiao_interesse">
+                    <option value="">Região de Interesse...</option>
+                    <option value="1">Regiao Interesse 1</option>
+                </select>  
+            </div>
+            <div class="d-flex justify-content-center mt-3">
+                <button type="submit" class="btn btn-success">Cadastrar</button>
+            </div>
+        </form>
+    @endcomponent
+@endsection

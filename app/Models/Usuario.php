@@ -30,4 +30,9 @@ class Usuario extends Model
     {
         return $this->hasMany(Telefone::class);
     }
+
+    public function fidelizacao() : HasMany
+    {
+        return $this->hasMany(Fidelizacao::class);
+    }
 }
