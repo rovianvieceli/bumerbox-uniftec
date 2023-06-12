@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Usuario;
 use App\Models\Categoria;
 use App\Models\Fidelizacao;
+use App\Models\RegiaoInteresse;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
@@ -43,7 +44,7 @@ class FidelizacaoController extends Controller
     {
         $dados = new \stdClass();
         $categorias = Categoria::all()->sortBy("nome");
-        $regiao_interesse = null;
+        $regiao_interesse = RegiaoInteresse::all()->sortBy("nome");
 
         $dados->categorias = $categorias;
         $dados->regiao_interesse = $regiao_interesse;
@@ -57,7 +58,8 @@ class FidelizacaoController extends Controller
     {
         $fidelizacao = Fidelizacao::find($id);
         $fidelizacao->categoria = Categoria::find($fidelizacao->categoria_id);
-
+        $fidelizacao->regiao_interesse = RegiaoInteresse::find($fidelizacao->regioes_interesse_id);
+    
        // dd($fidelizacao);
        // $fidelizacao = Fidelizacao::select("*")
        // ->leftJoin('categorias', 'categorias.id', '=', 'fidelizacoes.categoria_id')
@@ -82,8 +84,11 @@ class FidelizacaoController extends Controller
             return to_route('home.index')->with('success', false)->with('menssagem', "Registro não localizado!");
         }
         $fidelizacao->categoria = Categoria::find($fidelizacao->categoria_id);
-        $fidelizacao->categorias = Categoria::all()->sortBy("nome");
+        $fidelizacao->categorias = Categoria::all()->sortBy("id");
 
+        $fidelizacao->regiao_interesse = RegiaoInteresse::find($fidelizacao->regioes_interesse_id);
+        $fidelizacao->regioes = RegiaoInteresse::all()->sortBy("id");
+ 
         return view('fidelizacao.edit')
             ->withTitulo("Fidelizacao " . $fidelizacao->id)
             ->withSubTitulo('Altere os dados da atualização selecionado!')
@@ -98,7 +103,7 @@ class FidelizacaoController extends Controller
         try {
             DB::beginTransaction();
             $fidelizacao = Fidelizacao::create($request->all());
-            $request->merge(['usuario_id' => 1]);
+           // $request->merge(['usuario_id' => 1]);
             DB::commit();
         } catch (Exception $e) {
             Log::error($e->getMessage());
@@ -127,7 +132,7 @@ class FidelizacaoController extends Controller
         } catch (Exception $e) {
             Log::error($e->getMessage());
             DB::rollBack();
-            return back()->with('success', false)->with('menssagem', "Não possível atualizar o registro!");
+            return back()->with('success', false)->with('menssagem', "Não foi possível atualizar o registro!");
         }
 
         return to_route('fidelizacoes.show', $fidelizacao->id)->with('success', true)->with('menssagem', "Registro salvo com sucesso!");

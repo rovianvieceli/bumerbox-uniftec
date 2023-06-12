@@ -14,7 +14,7 @@ class Fidelizacao extends Model
 
     protected $primaryKey = 'id';
     protected $table = 'fidelizacoes';
-    protected $fillable = ['categoria_id', 'usuario_id', 'valor_receber'];
+    protected $fillable = ['categoria_id', 'usuario_id', 'valor_receber', 'regioes_interesse_id'];
 
     public function usuario(): BelongsTo
     {

@@ -31,9 +31,11 @@
 
                 <div>
                     <label for="regiao_interesse" class="visually-hidden">Região Interesse</label>
-                    <select name="regiao_interesse" id="regiao_interesse">
-                        <option value="">Região de Interesse...</option>
-                        <option value="1">Regiao Interesse 1</option>
+                    <select name="regioes_interesse_id" id="regioes_interesse_id">
+                        <option value="{{$fidelizacao->regiao_interesse->id}}">{{$fidelizacao->regiao_interesse->nome}}</option>
+                        @foreach($fidelizacao->regioes as $regiao)
+                          <option value="{{$regiao->id}}">{{$regiao->nome}}</option>
+                        @endforeach
                     </select>  
                 </div>
 

@@ -21,10 +21,12 @@
                 <input type="text" name="valor_receber" id="valor_receber" value="{{ old('valor_receber') }}" placeholder="Quantidade"/>
             </div>
             <div>
-                <label for="regiao_interesse" class="visually-hidden">Região Interesse</label>
-                <select name="regiao_interesse" id="regiao_interesse">
-                    <option value="">Região de Interesse...</option>
-                    <option value="1">Regiao Interesse 1</option>
+                <label for="regioes_interesse" class="visually-hidden">Região Interesse</label>
+                <select name="regioes_interesse_id" id="regioes_interesse_id">
+                    <option value="">Selecione a Região de Interesse</option>
+                    @foreach($dados->regiao_interesse as $regiao)
+                      <option value="{{$regiao->id}}">{{$regiao->nome}}</option>
+                    @endforeach
                 </select>  
             </div>
             <div class="d-flex justify-content-center mt-3">
