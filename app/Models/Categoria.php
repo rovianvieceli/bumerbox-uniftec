@@ -14,4 +14,9 @@ class Categoria extends Model
     protected $primaryKey = 'id';
     protected $table = 'categorias';
     protected $fillable = ['nome', 'valor_unitario'];
+
+    public function fidelizacao() : HasMany
+    {
+        return $this->hasMany(Fidelizacao::class);
+    }
 }
