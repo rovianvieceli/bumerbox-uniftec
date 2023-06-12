@@ -23,16 +23,18 @@ class FidelizacaoController extends Controller
     public function index()
     {
         /**
-         * @todo adicionar o campo regiao_interesse_id FK regiao interesse
+         * 
          *       join regiao_interesse
-         *       where pelo usuario logado 
+         *      
          */
         $campos = "categorias.nome,";
         $campos .= "fidelizacoes.valor_receber";
         $fidelizacao = Fidelizacao::select("fidelizacoes.*")
             ->Join('categorias', 'categorias.id', '=', 'fidelizacoes.categoria_id')
-            //->where('usuarios.id', '=', $id_usuario_logado)
+            ->where('usuario_id', '=', auth()->user()->id)
             ->paginate(10);
+
+            
 
         return view('fidelizacao.index')
             ->withTitulo('Listagem de Fidelizações')
@@ -102,8 +104,8 @@ class FidelizacaoController extends Controller
 
         try {
             DB::beginTransaction();
+            $request->merge(['usuario_id' => auth()->user()->id]);
             $fidelizacao = Fidelizacao::create($request->all());
-           // $request->merge(['usuario_id' => 1]);
             DB::commit();
         } catch (Exception $e) {
             Log::error($e->getMessage());

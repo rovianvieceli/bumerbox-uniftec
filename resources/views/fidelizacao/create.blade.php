@@ -6,7 +6,7 @@
             @csrf
 
             <div>
-            <input type="text" name="usuario_id" id="usuario_id" value="1" placeholder="usuario_id"/>
+            
                 <label for="categoria_id" class="visually-hidden">Categorias</label>
                 <select name="categoria_id" id="categoria_id">
                     <option value="">Selecione a Categoria</option>

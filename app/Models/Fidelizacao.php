@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Traits\AuditionTrait;
+use App\Traits\FidelizacaoTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -10,7 +11,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Fidelizacao extends Model
 {
-    use SoftDeletes, AuditionTrait;
+    use SoftDeletes, AuditionTrait, FidelizacaoTrait;
 
     protected $primaryKey = 'id';
     protected $table = 'fidelizacoes';
