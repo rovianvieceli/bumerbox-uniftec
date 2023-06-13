@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('regioes_interesse', function (Blueprint $table) {
             $table->id();
             $table->string('nome', 255);
+            $table->string('nome_cidade', 255);
             $table->datetimes();
             $table->softDeletes();
             $table->unsignedInteger('created_by')->nullable();
@@ -27,6 +28,7 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::dropIfExists('fidelizacoes');
         Schema::dropIfExists('regioes_interesse');
     }
 };
