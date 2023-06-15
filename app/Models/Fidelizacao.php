@@ -25,4 +25,8 @@ class Fidelizacao extends Model
     {
         return $this->belongsTo(Categoria::class);
     }
+    public function regiaoInteresse(): BelongsTo
+    {
+        return $this->belongsTo(RegiaoInteresse::class);
+    }
 }

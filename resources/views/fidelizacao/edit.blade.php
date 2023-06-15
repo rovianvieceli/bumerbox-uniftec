@@ -16,29 +16,36 @@
                 <div>
                     <label for="categoria" class="visually-hidden">Categoria</label>
                     <select name="categoria_id" id="categoria_id">
-                      <option value="{{$fidelizacao->categoria->id}}">{{$fidelizacao->categoria->nome}}</option>
                     @foreach($fidelizacao->categorias as $categoria)
-                      <option value="{{$categoria->id}}">{{$categoria->nome}}</option>
+                   
+                      @if($categoria->id == $fidelizacao->categoria_id )
+                        <option value="{{$categoria->id}}" selected = "selected" >{{$categoria->nome}}</option>
+                      @else 
+                        <option value="{{$categoria->id}}" > {{$categoria->nome}}</option> 
+                      @endif
+
                     @endforeach
                 </select>   
                 </div>
+                <div>
+                    <label for="regiao_interesse" class="visually-hidden">Região Interesse</label>
+                    <select name="regioes_interesse_id" id="regioes_interesse_id">
+                        @foreach($fidelizacao->regioes as $regiao)
 
+                          @if($regiao->id == $fidelizacao->regioes_interesse_id )
+                            <option value="{{$regiao->id}}" selected = "selected" >{{$regiao->nome}}</option>
+                          @else 
+                            <option value="{{$regiao->id}}" > {{$regiao->nome}}</option> 
+                          @endif
+
+                        @endforeach
+                    </select>  
+                </div>
                 <div>
                     <label for="quantidade" class="visually-hidden">Quantidade</label>
                     <input type="text" name="valor_receber" id="valor_receber"  placeholder="Quantidade"
                            value="{{ $fidelizacao->valor_receber }}">
                 </div>
-
-                <div>
-                    <label for="regiao_interesse" class="visually-hidden">Região Interesse</label>
-                    <select name="regioes_interesse_id" id="regioes_interesse_id">
-                        <option value="{{$fidelizacao->regiao_interesse->id}}">{{$fidelizacao->regiao_interesse->nome}}</option>
-                        @foreach($fidelizacao->regioes as $regiao)
-                          <option value="{{$regiao->id}}">{{$regiao->nome}}</option>
-                        @endforeach
-                    </select>  
-                </div>
-
 
                 <div class="d-flex justify-content-center my-3">
                     <button type="submit" class="btn btn-success">Atualizar</button>

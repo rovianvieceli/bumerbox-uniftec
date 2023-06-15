@@ -8,9 +8,6 @@
                     <a class="nav-link" href="{{ route('clientes.index') }}">Clientes</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('fidelizacoes.index') }}">Fidelização</a>
-                </li>  
-                <li class="nav-item">
                     <a class="nav-link" href="{{ route('fornecedores.index') }}">Fornecedores</a>
                 </li>
                 <li class="nav-item">
@@ -19,6 +16,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('regiaointeresse.index') }}">Regiões de Interesse</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('fidelizacoes.index') }}">Fidelização</a>
+                </li>  
 
                 <h6 class="menu-opcao d-flex">Extrair</h6>
 

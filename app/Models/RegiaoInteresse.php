@@ -14,4 +14,9 @@ class RegiaoInteresse extends Model
     protected $primaryKey = 'id';
     protected $table = 'regioes_interesse';
     protected $fillable = ['nome', 'nome_cidade'];
+
+    public function fidelizacao(): HasMany
+    {
+        return $this->hasMany(Fidelizacao::class);
+    }
 }

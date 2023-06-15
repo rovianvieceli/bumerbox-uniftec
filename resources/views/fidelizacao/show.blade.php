@@ -8,8 +8,6 @@
                 @endcomponent
             </div>
 
-           
-
             <div class="table-responsive mt-3">
                 <table class="table table-sm table-striped table-hover">
                     <tbody>
@@ -19,15 +17,15 @@
                     </tr>
                     <tr>
                         <th>Categoria</th>
-                        <td>{{ $fidelizacao->categoria->nome ?? ''}}</td>
-                    </tr>
-                    <tr>
-                        <th>Quantidade</th>
-                        <td>{{ $fidelizacao->valor_receber  ?? '' }}</td>
+                        <td>{{ $fidelizacao->categoria ?? ''}}</td>
                     </tr>
                     <tr>
                         <th>Regiao de Interesse</th>
-                        <td>{{$fidelizacao->regiao_interesse->nome  ?? ''}}</td>
+                        <td>{{$fidelizacao->regiao  ?? ''}}</td>
+                    </tr>
+                    <tr>
+                        <th>Valor Receber</th>
+                        <td>{{ $fidelizacao->valor_receber  ?? '' }}</td>
                     </tr>
                     <tr>
                         <th>Criado em</th>
