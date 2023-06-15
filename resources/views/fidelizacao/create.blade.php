@@ -15,11 +15,6 @@
                     @endforeach
                 </select>    
             </div>
-            
-            <div>
-                <label for="valor_receber" class="visually-hidden">Quantidade</label>
-                <input type="text" name="valor_receber" id="valor_receber" value="{{ old('valor_receber') }}" placeholder="Quantidade"/>
-            </div>
             <div>
                 <label for="regioes_interesse" class="visually-hidden">Região Interesse</label>
                 <select name="regioes_interesse_id" id="regioes_interesse_id">
@@ -28,6 +23,10 @@
                       <option value="{{$regiao->id}}">{{$regiao->nome}}</option>
                     @endforeach
                 </select>  
+            </div>
+            <div>
+                <label for="valor_receber" class="visually-hidden">Valor Receber</label>
+                <input type="text"  name="valor_receber" id="valor_receber" value="{{ old('valor_receber') }}" placeholder="Valor Receber"/>
             </div>
             <div class="d-flex justify-content-center mt-3">
                 <button type="submit" class="btn btn-success">Cadastrar</button>

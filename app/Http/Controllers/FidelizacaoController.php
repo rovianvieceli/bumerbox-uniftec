@@ -22,23 +22,19 @@ class FidelizacaoController extends Controller
 
     public function index()
     {
-        /**
-         * 
-         *       join regiao_interesse
-         *      
-         */
-        $campos = "categorias.nome,";
-        $campos .= "fidelizacoes.valor_receber";
-        $fidelizacao = Fidelizacao::select("fidelizacoes.*")
-            ->Join('categorias', 'categorias.id', '=', 'fidelizacoes.categoria_id')
-            ->where('usuario_id', '=', auth()->user()->id)
-            ->paginate(10);
 
-            
+        $fidelizacao = Fidelizacao::select(["fidelizacoes.*", 
+                                            "categorias.nome", 
+                                            "regioes_interesse.nome as regiao"])
+            ->join('categorias', 'categorias.id', '=', 'fidelizacoes.categoria_id')
+            ->Join('regioes_interesse', 'regioes_interesse.id', '=', 'fidelizacoes.regioes_interesse_id')
+            ->where('usuario_id', '=', auth()->user()->id)
+            ->orderBy("fidelizacoes.id")
+            ->paginate(10);
 
         return view('fidelizacao.index')
             ->withTitulo('Listagem de Fidelizações')
-            ->withSubTitulo('Listagem com todas as entregas do usuário!')
+            ->withSubTitulo('Listagem com todas as fidelizações do usuário!')
             ->withFidelizacoes($fidelizacao);
     }
     
@@ -58,15 +54,14 @@ class FidelizacaoController extends Controller
 
     public function show(int $id)
     {
-        $fidelizacao = Fidelizacao::find($id);
-        $fidelizacao->categoria = Categoria::find($fidelizacao->categoria_id);
-        $fidelizacao->regiao_interesse = RegiaoInteresse::find($fidelizacao->regioes_interesse_id);
-    
-       // dd($fidelizacao);
-       // $fidelizacao = Fidelizacao::select("*")
-       // ->leftJoin('categorias', 'categorias.id', '=', 'fidelizacoes.categoria_id')
-       // ->where('id', '=', $id);
-       // dd($fidelizacao);
+
+        $fidelizacao = Fidelizacao::select(["fidelizacoes.*", 
+                                            "categorias.nome as categoria", 
+                                            "regioes_interesse.nome as regiao"])
+            ->join('categorias', 'categorias.id', '=', 'fidelizacoes.categoria_id')
+            ->Join('regioes_interesse', 'regioes_interesse.id', '=', 'fidelizacoes.regioes_interesse_id')
+            ->where('fidelizacoes.id', '=', $id)
+            ->first();
 
         if (!$fidelizacao) {
             return to_route('home.index')->with('success', false)->with('menssagem', "Registro não localizado!");
@@ -85,22 +80,19 @@ class FidelizacaoController extends Controller
         if (!$fidelizacao) {
             return to_route('home.index')->with('success', false)->with('menssagem', "Registro não localizado!");
         }
-        $fidelizacao->categoria = Categoria::find($fidelizacao->categoria_id);
-        $fidelizacao->categorias = Categoria::all()->sortBy("id");
 
-        $fidelizacao->regiao_interesse = RegiaoInteresse::find($fidelizacao->regioes_interesse_id);
-        $fidelizacao->regioes = RegiaoInteresse::all()->sortBy("id");
+        $fidelizacao->categorias = Categoria::all()->sortBy("nome");
+        $fidelizacao->regioes = RegiaoInteresse::all()->sortBy("nome");
  
         return view('fidelizacao.edit')
             ->withTitulo("Fidelizacao " . $fidelizacao->id)
-            ->withSubTitulo('Altere os dados da atualização selecionado!')
+            ->withSubTitulo('Altere os dados da fidelização selecionada!')
             ->withFidelizacao($fidelizacao);
     }
 
     public function store(StoreFidelizacaoRequest $request)
     {
         $request->validated();
-       // @todo buscar usuario da sessao
 
         try {
             DB::beginTransaction();
@@ -110,7 +102,7 @@ class FidelizacaoController extends Controller
         } catch (Exception $e) {
             Log::error($e->getMessage());
             DB::rollBack();
-            return back()->with('success', false)->with('menssagem', "Não possível salvar o registro!");
+            return back()->with('success', false)->with('menssagem', "Não foi possível salvar o registro!");
         }
 
         return to_route('fidelizacoes.show', $fidelizacao->id)->with('success', true)->with('menssagem', "Registro salvo com sucesso!");
@@ -118,14 +110,13 @@ class FidelizacaoController extends Controller
 
     public function update(UpdateFidelizacaoRequest $request, int $id)
     {
+        $request->validated();
         $fidelizacao = Fidelizacao::find($id);
 
         if (!$fidelizacao) {
             return to_route('home.index')->with('success', false)->with('menssagem', "Registro não localizado!");
         }
 
-        //$request->validated();
-        // @todo buscar usuario da sessao
         try {
             DB::beginTransaction();
             $request->merge(['usuario_id' => $fidelizacao->usuario_id]);
