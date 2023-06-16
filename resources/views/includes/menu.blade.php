@@ -23,7 +23,7 @@
                 <h6 class="menu-opcao d-flex">Extrair</h6>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Relatórios</a>
+                    <a class="nav-link" href="{{ route('relatorios.index') }}" href="#">Relatórios</a>
                 </li>
 
                 <h6 class="menu-opcao d-flex">Configurações</h6>
