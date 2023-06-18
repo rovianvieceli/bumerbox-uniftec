@@ -8,6 +8,8 @@ use App\Models\Endereco;
 use App\Models\Telefone;
 use App\Models\Usuario;
 use Exception;
+use Illuminate\Database\Query\Builder;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
@@ -18,13 +20,17 @@ class FornecedorController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $fornecedores = Usuario::select('usuarios.*')
-            ->leftJoin('perfis', 'usuarios.id', '=', 'perfis.usuario_id')
-            ->orWhere('tipo_perfil_codigo', '=', 'FRN')
-            ->where('visivel', true)
-            ->paginate(10);
+        if ($request) {
+            $fornecedores = $this->querieBuilderFornecedor($request->all());
+        } else {
+            $fornecedores = Usuario::select('usuarios.*')
+                ->leftJoin('perfis', 'usuarios.id', '=', 'perfis.usuario_id')
+                ->orWhere('tipo_perfil_codigo', '=', 'FRN')
+                ->where('visivel', true)
+                ->paginate(10);
+        }
 
         return view('fornecedor.index')
             ->withTitulo('Listagem de Fornecedores')
@@ -95,15 +101,15 @@ class FornecedorController extends Controller
 
             $request->merge(['cidade_id' => 1]);
             if ($fornecedore->enderecos()->count()) {
-                $fornecedore->enderecos()->update($request->all(['usuario_id', 
-                                                                 'cidade_id', 
-                                                                 'rua',
-                                                                 'complemento',
-                                                                 'bairro',
-                                                                 'nomecidade',
-                                                                 'nomeestado' ,
-                                                                 'cep', 
-                                                                 'numero']));
+                $fornecedore->enderecos()->update($request->all(['usuario_id',
+                    'cidade_id',
+                    'rua',
+                    'complemento',
+                    'bairro',
+                    'nomecidade',
+                    'nomeestado',
+                    'cep',
+                    'numero']));
             } else {
                 Endereco::create($request->all());
             }
@@ -131,7 +137,7 @@ class FornecedorController extends Controller
 
             $fornecedore->telefones()->delete();
             $fornecedore->enderecos()->delete();
-            $fornecedore->update(['cpfcnpj'=>null]);
+            $fornecedore->update(['cpfcnpj' => null]);
             $fornecedore->delete();
 
             DB::commit();
@@ -142,5 +148,36 @@ class FornecedorController extends Controller
         }
 
         return to_route('fornecedores.index')->with('success', true)->with('menssagem', "Registro removido com sucesso!");
+    }
+
+    public function querieBuilderFornecedor(array $filtros = [])
+    {
+        $filtros = array_filter($filtros);
+
+        $fornecedores = Usuario::leftJoin('enderecos', 'usuarios.id', '=', 'enderecos.usuario_id')
+            ->leftJoin('telefones', 'usuarios.id', '=', 'telefones.usuario_id')
+            ->where('usuarios.visivel', '=', true);
+
+        if (key_exists('nome', $filtros)) {
+            $fornecedores->where('usuarios.nome', 'like', "%" . $filtros['nome'] . "%");
+        }
+
+        if (key_exists('cpfcnpj', $filtros)) {
+            $fornecedores->where('usuarios.cpfcnpj', 'like', "%" . $filtros['cpf_cnpj'] . "%");
+        }
+
+        if (key_exists('telefone', $filtros)) {
+            $fornecedores->where('telefones.numero', 'like', "%" . $filtros['telefone'] . "%");
+        }
+
+        if (key_exists('cep', $filtros)) {
+            $fornecedores->where('enderecos.cep', 'like', "%" . $filtros['cep'] . "%");
+        }
+
+        if (key_exists('endereco', $filtros)) {
+            $fornecedores->where('enderecos.rua', 'like', "%" . $filtros['endereco'] . "%");
+        }
+
+        return $fornecedores->paginate(10);
     }
 }

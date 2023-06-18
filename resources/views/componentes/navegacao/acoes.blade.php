@@ -13,7 +13,6 @@
         <a type="button" class="btn btn-sm btn-success" href="{{ route("$resource.index") }}">Listar</a>
     @elseif($acao === 'index')
         <div class="justify-content-center">
-            <a type="button" class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#filtros">Filtros</a>
             <a type="button" class="btn btn-sm btn-success" href="{{ route("$resource.create") }}">Novo</a>
         </div>
     @elseif($acao === 'edit')

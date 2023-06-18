@@ -3,6 +3,7 @@
         <div class="d-flex justify-content-end">
             @component('componentes.navegacao.acoes', ['acao' => 'index', 'resource' => $resource]) @endcomponent
         </div>
+        {{ $slot }}
         <div class="table-responsive">
             @if ($registros->total())
                 <table class="table table-sm table-striped table-hover">
