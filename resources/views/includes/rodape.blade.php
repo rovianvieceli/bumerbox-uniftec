@@ -7,4 +7,3 @@
         <img src="{{ asset('img/boneco.png') }}" class="img-fluid" alt="boneco">
     </figure>
 </div>
-@component('componentes.formulario.filtros') @endcomponent

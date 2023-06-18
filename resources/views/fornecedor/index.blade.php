@@ -7,5 +7,6 @@
         'titulos' => ['#', 'Nome', 'CNPJ', 'Fidelizado'],
         'colunas' => ['id', 'nome', 'isCpfOrCnpj', 'isFidelizado']
     ])
+        @component('fornecedor.parcial.filtros') @endcomponent
     @endcomponent
 @endsection
