@@ -22,7 +22,7 @@ class FornecedorController extends Controller
 
     public function index(Request $request)
     {
-        if ($request) {
+        if (!empty($request->all())) {
             $fornecedores = $this->querieBuilderFornecedor($request->all());
         } else {
             $fornecedores = Usuario::select('usuarios.*')
