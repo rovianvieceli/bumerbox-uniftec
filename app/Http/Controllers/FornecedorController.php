@@ -163,7 +163,7 @@ class FornecedorController extends Controller
         }
 
         if (key_exists('cpfcnpj', $filtros)) {
-            $fornecedores->where('usuarios.cpfcnpj', 'like', "%" . $filtros['cpf_cnpj'] . "%");
+            $fornecedores->where('usuarios.cpfcnpj', 'like', "%" . $filtros['cpfcnpj'] . "%");
         }
 
         if (key_exists('telefone', $filtros)) {
