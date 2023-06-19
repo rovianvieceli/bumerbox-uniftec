@@ -24,10 +24,8 @@ class FornecedorController extends Controller
     public function index(Request $request)
     {
         if (!empty(array_filter($request->except('_token')))) {
-            dump(1);
             $fornecedores = $this->querieBuilderFornecedor($request->all());
         } else {
-            dump(2);
             $fornecedores = Usuario::select('usuarios.*')
                 ->leftJoin('perfis', 'usuarios.id', '=', 'perfis.usuario_id')
                 ->orWhere('tipo_perfil_codigo', '=', 'FRN')
