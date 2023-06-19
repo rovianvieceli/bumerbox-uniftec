@@ -12,6 +12,7 @@ use Illuminate\Database\Query\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Str;
 
 class FornecedorController extends Controller
 {
@@ -156,6 +157,8 @@ class FornecedorController extends Controller
 
         $fornecedores = Usuario::leftJoin('enderecos', 'usuarios.id', '=', 'enderecos.usuario_id')
             ->leftJoin('telefones', 'usuarios.id', '=', 'telefones.usuario_id')
+            ->leftJoin('perfis', 'usuarios.id', '=', 'perfis.usuario_id')
+            ->orWhere('tipo_perfil_codigo', '=', 'FRN')
             ->where('usuarios.visivel', '=', true);
 
         if (key_exists('nome', $filtros)) {
@@ -163,15 +166,18 @@ class FornecedorController extends Controller
         }
 
         if (key_exists('cpfcnpj', $filtros)) {
-            $fornecedores->where('usuarios.cpfcnpj', 'like', "%" . $filtros['cpfcnpj'] . "%");
+            $cnpj = Str::replace(['.', '-', '/'], '', $filtros['cpfcnpj']);
+            $fornecedores->where('usuarios.cpfcnpj', 'like', "%" . $cnpj . "%");
         }
 
         if (key_exists('telefone', $filtros)) {
-            $fornecedores->where('telefones.numero', 'like', "%" . $filtros['telefone'] . "%");
+            $telefone = Str::replace(['(', ')', ' '], '', $filtros['telefone']);
+            $fornecedores->where('telefones.numero', 'like', "%" . $telefone . "%");
         }
 
         if (key_exists('cep', $filtros)) {
-            $fornecedores->where('enderecos.cep', 'like', "%" . $filtros['cep'] . "%");
+            $cep = Str::replace(['.', '-', '/'], '', $filtros['cep']);
+            $fornecedores->where('enderecos.cep', 'like', "%" . $cep . "%");
         }
 
         if (key_exists('endereco', $filtros)) {
