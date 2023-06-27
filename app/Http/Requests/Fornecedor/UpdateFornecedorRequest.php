@@ -25,7 +25,7 @@ class UpdateFornecedorRequest extends FormRequest
             'nomeestado' => $this->get('nomeestado'),
             'numero' => $this->get('numero'),
             'nome' => $this->get('nomefantasia'),
-            'senha' => Str::random(8),
+            //'senha' => Str::random(8),
         ]);
     }
 

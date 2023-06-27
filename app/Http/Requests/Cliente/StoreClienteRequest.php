@@ -6,6 +6,7 @@ use App\Rules\CpfOuCnpj;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rules\Password;
+use App\Rules\ValidaSenha;
 
 class StoreClienteRequest extends FormRequest
 {
@@ -48,6 +49,10 @@ class StoreClienteRequest extends FormRequest
                     ->numbers()
                     ->symbols()
                     ->uncompromised()
+            ],
+            'confirmar_senha' => [
+                'required',
+                new ValidaSenha
             ]
         ];
     }
@@ -68,6 +73,7 @@ class StoreClienteRequest extends FormRequest
                 "O campo :attribute deve conter pelo menos um número.",
                 "O campo :attribute possuí uma :attribute fraca. Por favor, forneça uma :attribute mais forte."
             ],
+            'confirmar_senha' => 'O campo :attribute não é igual a senha informada.'
         ];
     }
 }

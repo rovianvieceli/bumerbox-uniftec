@@ -58,6 +58,17 @@
                        placeholder="Telefone"/>
             </div>
 
+            <div>
+                <label for="senha" class="visually-hidden">Senha</label>
+                <input type="password" name="senha" id="senha" placeholder="Senha"/>
+            </div>
+
+            <div>
+                <label for="confirmar_senha" class="visually-hidden">Confirmar Senha</label>
+                <input type="password" name="confirmar_senha" id="confirmar_senha" placeholder="Confirmar senha"/>
+            </div>
+
+
             <div class="d-flex justify-content-center mt-3">
                 <button type="submit" class="btn btn-success">Cadastrar</button>
             </div>
